@@ -41,5 +41,30 @@ namespace PracticeApp
 
             return val1 == val2;
         }
+
+        public int MinDifference(int[] nums)
+        {
+            var length = nums.Length;
+            if (length < 5)
+                return 0;
+            Array.Sort(nums);
+            var mins = new int[]
+            {
+                nums[length - 1] - nums[3],
+                nums[length - 2] - nums[2],
+                nums[length - 3] - nums[1],
+                nums[length - 4] - nums[0],
+            };
+
+            var least = mins[0];
+            for (int val = 1; val < 4; val++)
+            {
+                if (least > mins[val])
+                    least = mins[val];
+            }
+
+            return least;
+        }
+
     }
 }
